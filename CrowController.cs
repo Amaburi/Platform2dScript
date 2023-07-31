@@ -85,6 +85,6 @@ public class CrowController : MonoBehaviour
         isDead = value;
         animator.SetBool("IsDeath", value);
         Debug.Log("IsDead");
-        // Additional logic if needed when setting the "IsDeath" parameter externally
+        
     }
 }
