@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections.Generic;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public GroundCheck groundCheck;
     public SpriteRenderer spriteRenderer;
     public bool isAttacking = false;
+    public float attackRange = 2f;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -61,5 +62,27 @@ public class PlayerController : MonoBehaviour
     public bool IsGrounded()
     {
         return groundCheck.IsGrounded();
+    }
+
+    public void HitCrowWithSword()
+    {
+        // Get all the crows in the scene
+        CrowController[] crows = FindObjectsOfType<CrowController>();
+
+        // Loop through each crow
+        foreach (CrowController crow in crows)
+        {
+            if (crow != null)
+            {
+                // Check if the crow is within attack range of the player
+                float distanceToCrow = Vector2.Distance(transform.position, crow.transform.position);
+                if (distanceToCrow <= attackRange)
+                {
+                    // If the crow is within attack range, apply damage
+                    crow.TakeDamage();
+                    crow.SetIsDead(true);
+                }
+            }
+        }
     }
 }
