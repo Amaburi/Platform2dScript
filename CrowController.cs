@@ -51,7 +51,7 @@ public class CrowController : MonoBehaviour
         animator.SetBool("IsFly", isFly);
         animator.SetBool("IsDeath", isDead);
 
-        // Check for the player's attack and trigger crow's death if attacked
+        
         
     }
 
@@ -67,9 +67,9 @@ public class CrowController : MonoBehaviour
             isFly = false;
             animator.SetBool("IsFly", false);
 
-            // Add any additional death behavior here (e.g., disable movement, destroy GameObject, etc.)
+            
 
-            // Mark the crow as dead
+           
            
         }
     }
